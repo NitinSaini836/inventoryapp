@@ -1,0 +1,21 @@
+
+<style>
+  img {
+  border-radius: 8px;
+  width :300;
+   height:100;
+}
+</style>
+
+
+<ul>
+    <% result.forEach(function(result) { %>
+      <li>
+      <h3><strong>Name:</strong> <%= result.name %></h3>
+      <h3><strong>Price:</strong><%= result.price%></h3>
+     <img src= "<%=  result.image%>"/>    
+     
+      </li>
+    <% }); %>
+  </ul>
+  <input type="number"></input>
