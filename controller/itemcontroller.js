@@ -49,7 +49,7 @@ itemModel.find({"name":`${req.body.name}`}).lean().exec(function(error, records)
             console.log(err);
         }
         else{
-            res.send(data);
+            res.render("Data updated");
             console.log("Data updated!");
         }
     });  
@@ -76,3 +76,50 @@ itemModel.find({"name":`${req.body.name}`}).lean().exec(function(error, records)
                             })
                             } )
                     }
+
+
+
+                    module.exports.update=(req,res)=>{
+//    let findItem = itemModel.find({"name" :`${req.body.name}`});
+//    console.log(findItem)
+itemModel.find({"name":`${req.body.name}`}).lean().exec(function(error, records) {
+    records.forEach(function(record) {
+      console.log(record._id);
+      var itemid= record._id;
+      itemModel.findByIdAndUpdate (itemid,  {name: req.body.newname },function(err, data) {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send("Data updated");
+            console.log("Data updated!");
+        }
+    });  
+  }
+    )
+})
+}
+module.exports.getDelete=(req,res)=>{
+    res.render('delete.ejs')
+}
+
+module.exports.delete=(req,res)=>{
+    //    let findItem = itemModel.find({"name" :`${req.body.name}`});
+    //    console.log(findItem)
+    itemModel.find({"name":`${req.body.name}`}).lean().exec(function(error, records) {
+        records.forEach(function(record) {
+          console.log(record._id);
+          var itemid= record._id;
+          itemModel.findByIdAndDelete (itemid,function(err, data) {
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.send("Data Deleted!");
+                console.log("Data updated!");
+            }
+        });  
+      }
+        )
+    })
+    }

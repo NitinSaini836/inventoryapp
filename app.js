@@ -30,6 +30,7 @@ app.use(express.static("uploads"))
 app.set('view engine', 'ejs')
 app.use('/',upload.single('avatar'), indexRouter);
 app.use('/update', indexRouter);
+app.use('/delete', indexRouter);
 app.use('/',categoryRouter);
 // app.use('/api/new',newRouter)
 module.exports = app;

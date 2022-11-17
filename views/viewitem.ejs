@@ -16,5 +16,19 @@
        <img src= "<%=  result.image%>"/>    
        
         </li>
+      
       <% }); %>
     </ul>
+    <button onclick="update()">update</button>
+    <button onclick="Delete()">Delete</button>
+
+
+
+     <script>
+      var update=()=>{
+        location.href="http://localhost:3000/update";
+      }
+      var Delete=()=>{
+        location.href="http://localhost:3000/delete";
+      }
+     </script>
